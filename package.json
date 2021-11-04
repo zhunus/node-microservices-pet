@@ -6,6 +6,7 @@
     "client",
     "posts",
     "event-bus",
-    "query"
+    "query",
+    "moderation"
   ]
 }

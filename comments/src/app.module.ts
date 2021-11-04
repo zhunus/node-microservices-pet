@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CommentsController } from './comments/comments.controller';
-import { EventsController } from './events/events.controller';
+import {
+  CommentsController,
+  EventsController,
+} from './comments/comments.controller';
 
 @Module({
   imports: [],
