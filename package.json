@@ -1,0 +1,9 @@
+{
+  "name": "pet",
+  "private": "true",
+  "workspaces": [
+    "comments",
+    "client",
+    "posts"
+  ]
+}
