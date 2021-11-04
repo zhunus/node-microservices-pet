@@ -7,6 +7,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { randomBytes } from 'crypto';
+import axios from 'axios';
 
 interface Comment {
   id: string;
@@ -30,7 +31,10 @@ export class CommentsController {
   }
 
   @Post('/:id/comments')
-  postComment(@Param('id') postId: string, @Body() { content }: CommentDto) {
+  async postComment(
+    @Param('id') postId: string,
+    @Body() { content }: CommentDto,
+  ) {
     const id = randomBytes(4).toString('hex');
     const comment = { id, content };
     if (commentsByPostId[postId]) {
@@ -38,6 +42,16 @@ export class CommentsController {
     } else {
       commentsByPostId[postId] = [comment];
     }
+
+    await axios.post('http://localhost:4005/events', {
+      type: 'CommentCreated',
+      data: {
+        id,
+        content,
+        postId,
+      },
+    });
+
     return commentsByPostId[postId];
   }
 }

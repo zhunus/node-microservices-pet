@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const PostCreate = () => {
+const PostCreate = ({ onSubmitHandler }) => {
   const [title, setTitle] = useState("");
 
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    await axios.post("http://localhost:4000/posts", {
+    const response = await axios.post("http://localhost:4000/posts", {
       title,
     });
+
+    onSubmitHandler(response.data);
 
     setTitle("");
   };
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <form className="d-flex align-items-end" onSubmit={onSubmit}>
         <div className="form-group">
           <label>Title</label>
           <input
@@ -25,7 +27,7 @@ const PostCreate = () => {
             className="form-control"
           />
         </div>
-        <button className="btn btn-primary">Submit</button>
+        <button className="mx-2 btn btn-primary">Submit</button>
       </form>
     </div>
   );

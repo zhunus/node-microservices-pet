@@ -16,7 +16,7 @@ const CommentCreate = ({ postId }) => {
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <form className="d-flex align-items-end" onSubmit={onSubmit}>
         <div className="form-group">
           <label>New Comment</label>
           <input
@@ -25,7 +25,7 @@ const CommentCreate = ({ postId }) => {
             className="form-control"
           />
         </div>
-        <button className="btn btn-primary">Submit</button>
+        <button className="mx-2 btn btn-primary">Submit</button>
       </form>
     </div>
   );

@@ -4,6 +4,8 @@
   "workspaces": [
     "comments",
     "client",
-    "posts"
+    "posts",
+    "event-bus",
+    "query"
   ]
 }
